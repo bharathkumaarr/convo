@@ -17,7 +17,7 @@ function ProtectedRoute({ children }) {
 
   if (loading) {
     return (
-      <div className="h-screen flex items-center justify-center bg-zinc-950 text-zinc-100">
+      <div className="h-screen flex items-center justify-center from-[#0b1f2a] from-0% via-[#132f3d] via-25% to-[#eef2f5] to-100% text-zinc-100">
         Checking authentication...
       </div>
     );
