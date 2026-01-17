@@ -41,3 +41,15 @@ export const getChatHistory = async (chatSessionId, userId) => {
   return messages;
 };
 
+export const addAssistantMessage = async (
+  chatSessionId,
+  content
+) => {
+  const message = await Message.create({
+    chatSession: chatSessionId,
+    role: "assistant",
+    content,
+  });
+
+  return message;
+};

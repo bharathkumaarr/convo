@@ -2,7 +2,7 @@ import { ChatSession } from "../models/chatSession.model.js";
 import { Agent } from "../models/agent.model.js";
 import { Project } from "../models/project.model.js";
 import { Message } from "../models/message.model.js";
-import { Agent } from "../models/agent.model.js";
+
 
 export const createChatSession = async (agentId, userId) => {
   // 1. Find agent
