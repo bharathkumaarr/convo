@@ -1,7 +1,12 @@
 import express from 'express'
 import cors from 'cors'
 import cookieparser from 'cookie-parser'
+
 import authRoutes from "./routes/auth.routes.js";
+import { requireAuth } from "./middlewares/auth.middleware.js";
+import projectRoutes from "./routes/project.routes.js";
+
+
 
 
 const app = express()
@@ -9,21 +14,31 @@ const app = express()
 
 app.use(express.json())
 app.use(cookieparser())
-
-app.use("/api/auth", authRoutes);
-
-
-
-
 app.use(
     cors({
-        origin: "https://localhost:5173",
+        origin: "http://localhost:5173",
         credentials: true
     })
 )
+
+app.use("/api/auth", authRoutes);
+app.use("/api/projects", projectRoutes);
+
+
+
+
+
 app.get('/health', (req,res)=>{
     res.status(200).json({status:'ok', service: 'convo-api'})
 })
+
+app.get("/api/protected", requireAuth, (req, res) => {
+  res.json({
+    message: "You are authenticated",
+    userId: req.user.id,
+  });
+});
+
 
 
 export default app
