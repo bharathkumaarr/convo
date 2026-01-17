@@ -1,12 +1,8 @@
 import express from "express";
-import { create, list } from "../controllers/project.controller.js";
+import { create, list } from "../controllers/agent.controller.js";
 import { requireAuth } from "../middlewares/auth.middleware.js";
-import agentRoutes from "./agent.routes.js";
 
-
-const router = express.Router();
-
-router.use("/:projectId/agents", agentRoutes);
+const router = express.Router({ mergeParams: true });
 
 router.post("/", requireAuth, create);
 router.get("/", requireAuth, list);
