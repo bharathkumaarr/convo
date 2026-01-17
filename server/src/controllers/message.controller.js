@@ -1,4 +1,6 @@
 import { addUserMessage } from "../services/message.service.js";
+import { getChatHistory } from "../services/message.service.js";
+
 
 export const sendUserMessage = async (req, res) => {
   try {
@@ -20,3 +22,19 @@ export const sendUserMessage = async (req, res) => {
     res.status(403).json({ message: error.message });
   }
 };
+
+export const getMessages = async (req, res) => {
+  try {
+    const { chatSessionId } = req.params;
+
+    const messages = await getChatHistory(
+      chatSessionId,
+      req.user.id
+    );
+
+    res.json(messages);
+  } catch (error) {
+    res.status(403).json({ message: error.message });
+  }
+};
+

@@ -23,3 +23,21 @@ export const addUserMessage = async (
 
   return message;
 };
+
+export const getChatHistory = async (chatSessionId, userId) => {
+  const session = await ChatSession.findOne({
+    _id: chatSessionId,
+    createdBy: userId,
+  });
+
+  if (!session) {
+    throw new Error("Chat session not found or access denied");
+  }
+
+  const messages = await Message.find({
+    chatSession: chatSessionId,
+  }).sort({ createdAt: 1 });
+
+  return messages;
+};
+
