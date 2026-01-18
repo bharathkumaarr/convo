@@ -25,6 +25,9 @@ export const login = async (req, res) => {
 
     const { user, token } = await loginUser(email, password);
 
+
+    const isProd = process.env.NODE_ENV === "production";
+
     res.cookie("token", token, {
       httpOnly: true,
       sameSite: isProd ? "none" : "lax",
