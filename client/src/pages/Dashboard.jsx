@@ -48,9 +48,9 @@ function Dashboard() {
 
   return (
     <div className="h-screen w-full bg-zinc-950 text-zinc-100 flex">
-        <h1 className='text-5xl italic text-[#0b1f2a]'>Convo</h1>
-      {/* <aside className="w-64 bg-zinc-900 p-4">
-      </aside> */}
+      <aside className="w-64 bg-zinc-900 p-4">
+        <h1 className='text-5xl italic text-zinc-100'>Convo</h1>
+      </aside>
 
       <main className="flex-1 p-6">
         <h1 className="text-2xl mb-4">Projects</h1>
