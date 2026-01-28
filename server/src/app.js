@@ -39,6 +39,9 @@ app.use("/api/chat", messageRoutes);
 app.get('/health', (req,res)=>{
     res.status(200).json({status:'ok', service: 'convo-api'})
 })
+app.get('/', (req,res)=> {
+  res.json({status: 'ok', url: 'https://convo-sigma.vercel.app/'})
+})
 
 app.get("/api/protected", requireAuth, (req, res) => {
   res.json({
